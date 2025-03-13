@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Funny Thing Happened on the Way to the Forum</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .playlist-container { display: flex; flex-direction: column; align-items: center; }
+        .playlist { list-style: none; padding: 0; }
+        .playlist li { padding: 10px; cursor: pointer; background: #f0f0f0; margin: 5px; width: 200px; text-align: center; border-radius: 5px; }
+        .playlist li:hover { background: #ddd; }
+    </style>
+</head>
+<body>
+
+    <h2>A Funny Thing Happened on the Way to the Forum</h2>
+
+    <audio id="audioPlayer" controls></audio>
+
+    <div class="playlist-container">
+        <ul class="playlist">
+            <li data-src="audio/Forum_116.mp3">Overture</li>
+            <li data-src="audio/Forum_216.mp3">Comedy Tonight</li>
+            <li data-src="audio/Forum_316.mp3">Love, I Hear</li>
+            <li data-src="audio/Forum_416.mp3">Free</li>
+        </ul>
+    </div>
+
+    <script>
+        const audioPlayer = document.getElementById("audioPlayer");
+        const playlistItems = document.querySelectorAll(".playlist li");
+
+        function loadTrack(src) {
+            audioPlayer.src = src;
+            audioPlayer.play();
+        }
+
+        playlistItems.forEach(item => {
+            item.addEventListener("click", function () {
+                loadTrack(this.getAttribute("data-src"));
+            });
+        });
+
+        if (playlistItems.length > 0) {
+            loadTrack(playlistItems[0].getAttribute("data-src"));
+        }
+    </script>
+
+</body>
+</html>
