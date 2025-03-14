@@ -47,6 +47,24 @@
         width: 95%; /* Use more width on small screens */
     }
 }
+.audio-player-container {
+    width: 90%; /* Makes it responsive */
+    max-width: 600px; /* Prevents it from getting too wide */
+    margin: 10px auto; /* Centers the player */
+    display: flex;
+    justify-content: center;
+}
+
+#audioPlayer {
+    width: 100%; /* Makes the player stretch to fit */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .audio-player-container {
+        width: 95%; /* Use more width on small screens */
+    }
+}
 
     </style>
 </head>
@@ -56,8 +74,10 @@
     <h2>1996 Broadway Cast Recording</h2>
     <h4>( &#169; & &#8471;1996 Angel Records, CDQ 724385222320 )</h4>
     <p>Nathan Lane<br>Mark Linn-Baker, Lewis J. Stadlen<br>Ernie Sabella, William Duell, Mary Testa<br>Jessica Boevers, Cris Groenendaal, Jim Stanek</p>
-
+<div class="audio-player-container">
     <audio id="audioPlayer" controls></audio>
+</div>
+    
 
     <div class="playlist-container">
         <ul class="playlist">
