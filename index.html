@@ -81,25 +81,37 @@
         </ul>
     </div>
 
-    <script>
-        const audioPlayer = document.getElementById("audioPlayer");
-        const playlistItems = document.querySelectorAll(".playlist li");
+   <script>
+    // Select the audio player and playlist items
+    const audioPlayer = document.getElementById("audioPlayer");
+    const playlistItems = document.querySelectorAll(".playlist li");
 
-        function loadTrack(src) {
-            audioPlayer.src = src;
-            audioPlayer.play();
-        }
+    // Function to load audio dynamically
+    function loadTrack(src) {
+        audioPlayer.src = src;
+        audioPlayer.play();
+    }
 
-        playlistItems.forEach(item => {
-            item.addEventListener("click", function () {
-                loadTrack(this.getAttribute("data-src"));
-            });
+    // Attach event listeners to each playlist item
+    playlistItems.forEach(item => {
+        item.addEventListener("click", function () {
+            loadTrack(this.getAttribute("data-src"));
         });
+    });
 
-        if (playlistItems.length > 0) {
-            loadTrack(playlistItems[0].getAttribute("data-src"));
+    // Automatically load the first track on page load
+    if (playlistItems.length > 0) {
+        loadTrack(playlistItems[0].getAttribute("data-src"));
+    }
+
+    // Disable right-click on audio player to prevent "Save Audio As"
+    document.addEventListener("contextmenu", function(event) {
+        if (event.target.tagName === "AUDIO") {
+            event.preventDefault();
         }
-    </script>
+    });
+</script>
+
 
 </body>
 </html>
